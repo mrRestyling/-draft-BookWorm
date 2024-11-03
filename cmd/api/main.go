@@ -74,7 +74,7 @@ func main() {
 // curl -i localhost:8000/v1/healthcheck
 
 func (a *application) HealhcheckHandler(w http.ResponseWriter, r *http.Request) {
-	// 1
+	// 2
 	log.Println("запрос на HealhcheckHandler")
 	fmt.Fprintln(w, "status: available")
 	fmt.Fprintf(w, "environment: %s\n", a.config.env)

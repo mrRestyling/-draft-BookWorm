@@ -83,5 +83,3 @@ func (a *application) HealhcheckHandler(w http.ResponseWriter, r *http.Request) 
 	fmt.Fprintf(w, "version: %s\n", version)
 
 }
-
-// whifow

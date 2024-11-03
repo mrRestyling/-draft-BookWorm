@@ -53,6 +53,8 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/v1/healthcheck", app.HealhcheckHandler)
 
+	// http.HandleFunc("/v1/healthcheck", app.HealhcheckHandler)
+
 	// Объявляем HTTP-сервер с настройками тайм-аута, который прослушивает порт,
 	// указанный в структуре конфигурации, и использует созданный выше мультиплексор.
 	srv := &http.Server{
@@ -81,3 +83,5 @@ func (a *application) HealhcheckHandler(w http.ResponseWriter, r *http.Request) 
 	fmt.Fprintf(w, "version: %s\n", version)
 
 }
+
+// whifow

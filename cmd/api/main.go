@@ -71,5 +71,5 @@ func main() {
 }
 
 func (a *application) HealhcheckHandler(w http.ResponseWriter, r *http.Request) {
-	// затычка1
+	// затычка2
 }

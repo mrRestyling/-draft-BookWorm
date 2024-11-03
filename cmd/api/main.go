@@ -53,6 +53,8 @@ func main() {
 	mux := http.NewServeMux()
 	mux.HandleFunc("/v1/healthcheck", app.HealhcheckHandler)
 
+	// http.HandleFunc("/v1/healthcheck", app.HealhcheckHandler)
+
 	// Объявляем HTTP-сервер с настройками тайм-аута, который прослушивает порт,
 	// указанный в структуре конфигурации, и использует созданный выше мультиплексор.
 	srv := &http.Server{
@@ -74,10 +76,12 @@ func main() {
 // curl -i localhost:8000/v1/healthcheck
 
 func (a *application) HealhcheckHandler(w http.ResponseWriter, r *http.Request) {
-	// 1
+	// 2
 	log.Println("запрос на HealhcheckHandler")
 	fmt.Fprintln(w, "status: available")
 	fmt.Fprintf(w, "environment: %s\n", a.config.env)
 	fmt.Fprintf(w, "version: %s\n", version)
 
 }
+
+// whifow

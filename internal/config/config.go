@@ -10,17 +10,14 @@ type Config struct {
 	Env  string
 }
 
-func New() *Config {
-
-	var port int
-	var env string
-	// Записываем значения флагов командной строки port и env в структуру конфигурации
-	flag.IntVar(&port, "port", 8000, "API server port")
-	flag.StringVar(&env, "env", "development", "Environment (development|staging|production)")
+func (c *Config) ParseFlags() {
+	flag.IntVar(&c.Port, "port", 8000, "API server port")
+	flag.StringVar(&c.Env, "env", "development", "Environment (development|staging|production)")
 	flag.Parse()
+}
 
-	return &Config{
-		Port: port,
-		Env:  env,
-	}
+func New() *Config {
+	c := &Config{}
+	c.ParseFlags()
+	return c
 }

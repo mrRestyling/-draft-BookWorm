@@ -5,6 +5,7 @@ import (
 )
 
 type Configurator interface {
+	ParseFlags()
 }
 
 // Определим структуру приложения, которая будет содержать зависимости для

@@ -6,8 +6,9 @@ import (
 	"net/http"
 	"os"
 	"time"
-	"worm/internal/app"
 	"worm/internal/config"
+	"worm/internal/handlers"
+	"worm/internal/myApp"
 )
 
 func main() {
@@ -19,14 +20,15 @@ func main() {
 	logger := log.New(os.Stdout, "", log.Ldate|log.Ltime)
 
 	// Объявляем экземпляр структуры приложения, которая содержит структуру конфигурации и логгер
+	app := myApp.New(cfg, logger)
 
-	app := app.New(cfg, logger)
+	hand := handlers.New(app)
 
 	// Объявляем HTTP-сервер с настройками тайм-аута, который прослушивает порт,
 	// указанный в структуре конфигурации, и использует созданный выше мультиплексор.
 	srv := &http.Server{
 		Addr:         fmt.Sprintf(":%d", cfg.Port),
-		Handler:      app.Routes(),
+		Handler:      hand.Routes(),
 		IdleTimeout:  time.Minute,
 		ReadTimeout:  10 * time.Second,
 		WriteTimeout: 30 * time.Second,

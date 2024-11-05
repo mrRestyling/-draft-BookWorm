@@ -40,7 +40,7 @@ func (h *Handlers) HealhcheckHandler(w http.ResponseWriter, r *http.Request) {
 	// Для проверки
 	log.Println("запрос на HealhcheckHandler")
 	fmt.Fprintln(w, "status: available")
-	fmt.Fprintf(w, "environment: %s\n", h.APP.Config.Env)
+	// fmt.Fprintf(w, "environment: %s\n", h.APP.Configurator.Env)
 	fmt.Fprintf(w, "version: %s\n", Version)
 
 }

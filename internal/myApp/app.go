@@ -2,17 +2,19 @@ package myApp
 
 import (
 	"log"
-	"worm/internal/config"
 )
+
+type Configurator interface {
+}
 
 // Определим структуру приложения, которая будет содержать зависимости для
 // обработчиков HTTP, вспомогательных функций и middleware
 type Application struct {
-	Config *config.Config
+	Config Configurator
 	Logs   *log.Logger
 }
 
-func New(cfg *config.Config, logger *log.Logger) *Application {
+func New(cfg Configurator, logger *log.Logger) *Application {
 	return &Application{
 		Config: cfg,
 		Logs:   logger,

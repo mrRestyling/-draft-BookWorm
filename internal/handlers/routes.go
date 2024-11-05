@@ -4,7 +4,6 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"worm/internal/myApp"
 
 	"github.com/go-chi/chi/v5"
 )
@@ -14,10 +13,13 @@ import (
 const Version = "1.0.0"
 
 type Handlers struct {
-	APP *myApp.Application
+	APP AppInt
 }
 
-func New(app *myApp.Application) *Handlers {
+type AppInt interface {
+}
+
+func New(app AppInt) *Handlers {
 	return &Handlers{
 		APP: app,
 	}

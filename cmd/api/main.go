@@ -3,12 +3,12 @@ package main
 import (
 	"fmt"
 	"log"
-	"net/http"
 	"os"
 	"time"
 	"worm/internal/config"
 	"worm/internal/handlers"
 	"worm/internal/myApp"
+	"worm/internal/server"
 )
 
 func main() {
@@ -25,18 +25,14 @@ func main() {
 	hand := handlers.New(app)
 
 	// Объявляем HTTP-сервер с настройками тайм-аута, который прослушивает порт,
-	// указанный в структуре конфигурации, и использует созданный выше мультиплексор.
-	srv := &http.Server{
-		Addr:         fmt.Sprintf(":%d", cfg.Port),
-		Handler:      hand.Routes(),
-		IdleTimeout:  time.Minute,
-		ReadTimeout:  10 * time.Second,
-		WriteTimeout: 30 * time.Second,
-	}
+	// указанный в структуре конфигурации
+
+	srv := server.New(fmt.Sprintf(":%d", cfg.Port), hand.Routes(), time.Minute, 10*time.Second, 30*time.Second)
 
 	logger.Printf("start %s server on %s", cfg.Env, srv.Addr)
 
 	err := srv.ListenAndServe()
+
 	logger.Fatal(err)
 
 }

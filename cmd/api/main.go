@@ -40,7 +40,7 @@ func main() {
 	logger := log.New(os.Stdout, "", log.Ldate|log.Ltime)
 
 	// Объявляем экземпляр структуры приложения, которая содержит структуру конфигурации и логгер
-	app := application{
+	app := &application{
 		config: cfg,
 		logs:   logger,
 	}

@@ -1,17 +1,23 @@
-package main
+package handlers
 
 import (
 	"fmt"
 	"net/http"
+
+	"github.com/ktr0731/evans/app"
 )
 
+type Handlers struct {
+	APP *app.App
+}
+
 // Обработчик для эндпоинта POST
-func (a *application) CreateHandler(w http.ResponseWriter, r *http.Request) {
+func (h *Handlers) CreateHandler(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "Create new book")
 }
 
 // Обработчик для эндпоинта GET
-func (a *application) ShowBookHandler(w http.ResponseWriter, r *http.Request) {
+func (h *Handlers) ShowBookHandler(w http.ResponseWriter, r *http.Request) {
 
 	// Получаем id из URL вспомогательным методом
 	id, err := a.ReadID(r)

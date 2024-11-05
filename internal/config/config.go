@@ -11,7 +11,7 @@ type Config struct {
 }
 
 func (c *Config) ParseFlags() {
-	flag.IntVar(&c.Port, "port", 8000, "API server port")
+	flag.IntVar(&c.Port, "port", 8080, "API server port")
 	flag.StringVar(&c.Env, "env", "development", "Environment (development|staging|production)")
 	flag.Parse()
 }

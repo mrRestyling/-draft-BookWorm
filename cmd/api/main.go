@@ -72,11 +72,8 @@ func main() {
 
 }
 
-// аналог для терминала
-// curl -i localhost:8000/v1/healthcheck
-
 func (a *application) HealhcheckHandler(w http.ResponseWriter, r *http.Request) {
-	// 4
+	// Для проверки
 	log.Println("запрос на HealhcheckHandler")
 	fmt.Fprintln(w, "status: available")
 	fmt.Fprintf(w, "environment: %s\n", a.config.env)

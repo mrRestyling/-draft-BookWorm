@@ -5,7 +5,7 @@
 2. Флаги
 3. Логгер 
 4. ENV
-5. Маршрутезатор Chi (go get github.com/go-chi/chi/v5)
+5. Маршрутизатор Chi (go get github.com/go-chi/chi/v5)
 
 
 

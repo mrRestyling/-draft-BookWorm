@@ -11,8 +11,11 @@
 
 
 Проверка работоспособности из терминала:
+
 $ curl -i localhost:8080/v1/healthcheck
+
 $ curl -X POST localhost:8080/v1/books
+
 $ curl localhost:8080/v1/books/12
 
 
